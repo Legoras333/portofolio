@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cristi Pătrașcanu • Web Design & Development</title>
+  <meta name="description" content="Cristi Pătrașcanu — Web Designer & Developer. Web Design Modern, WordPress, SEO & Marketing Digital, Fotografie & Video. Site-uri premium, elegante și rapide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Inter + Playfair + Great Vibes (semnătură) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --coffee-950:#201610; --coffee-900:#2b221b; --coffee-800:#3a2c24; --coffee-700:#4a342b;
+      --cream-50:#faf6f0; --cream-100:#f4ecdf;
+      --gold-1:#b88a55; --gold-2:#d6a25e; --gold-3:#f1d9b5;
+      --text:#2b221b; --muted:#6f645a; --ring:rgba(214,162,94,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto;color:var(--text);background:var(--cream-50);scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,92%);margin:0 auto}
+
+    /* ===== HEADER ===== */
+    header{
+      position:sticky;top:0;z-index:100;
+      background:linear-gradient(90deg,rgba(43,34,27,.96),rgba(60,45,35,.96));
+      border-bottom:1px solid rgba(214,162,94,.35);
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo svg{height:56px;width:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.35))}
+    .menu{display:flex;align-items:center;gap:1rem}
+    .menu ul{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
+    .menu a{color:#f6ead8;padding:.45rem .8rem;border-radius:10px;font-weight:500;transition:all .25s ease}
+    .menu a:hover{color:#2b221b;background:linear-gradient(90deg,var(--gold-2),var(--gold-3));box-shadow:0 3px 10px rgba(214,162,94,.35)}
+    .cta{background:linear-gradient(90deg,var(--gold-2),var(--gold-3));color:#2b221b;font-weight:700;border-radius:999px;padding:.6rem 1rem;box-shadow:0 6px 18px rgba(214,162,94,.45);transition:transform .25s ease}
+    .cta:hover{transform:translateY(-1px) scale(1.03)}
+    /* Burger */
+    .burger{display:none;width:28px;height:20px;cursor:pointer}
+    .burger span{display:block;height:3px;background:#f1e7d6;border-radius:3px;margin:3px 0;transition:.3s}
+    .burger.active span{background:var(--gold-2);} /* vizibil X */
+    .burger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .burger.active span:nth-child(2){opacity:0}
+    .burger.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    @media (max-width:960px){
+      .burger{display:block}
+      .menu{position:fixed;inset:0 0 0 auto;right:-100%;width:100%;height:100vh;background:rgba(43,34,27,.97);
+        flex-direction:column;justify-content:center;gap:1.2rem;transition:right .35s ease}
+      .menu.open{right:0}
+      .menu ul{flex-direction:column;gap:1.2rem}
+    }
+
+    /* ===== HERO ===== */
+    .hero{
+      position:relative;height:86vh;display:grid;place-items:center;text-align:center;overflow:hidden;
+      background:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+      animation:heroZoom 18s ease-in-out infinite alternate;
+    }
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,22,16,.58),rgba(32,22,16,.72));z-index:1}
+    .hero::after{content:"";position:absolute;inset:-20% -10% -30% -10%;background:
+      repeating-radial-gradient(circle at 20% 30%, rgba(214,162,94,.10) 0 12px, rgba(0,0,0,0) 12px 24px);
+      opacity:.5;mix-blend:multiply;z-index:1;pointer-events:none}
+    .hero .inner{position:relative;z-index:2;color:#f6ead8;max-width:900px;padding:0 1rem;animation:fadeInUp .8s ease}
+    .hero h1{
+      font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;margin:0 0 .3rem;
+      background:linear-gradient(90deg,var(--gold-3),var(--gold-2),#fff1db);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 3px 12px rgba(0,0,0,.35)
+    }
+    .roles{font-size:1.05rem;opacity:.95;margin:.2rem 0 1.2rem}
+    .badges{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin:0 0 1.4rem}
+    .badge{background:#fff;border:1px solid var(--ring);color:#5b4b3e;border-radius:999px;padding:.35rem .65rem;font-size:.86rem}
+    .actions{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.1rem;border-radius:12px;border:1px solid var(--ring);background:#d79f56;font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,var(--gold-2),var(--gold-3));border:none;color:#2b221b}
+    .btn.ghost:hover{background:rgba(214,162,94,.12)}
+    @keyframes heroZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ===== SECTIONS ===== */
+    section{padding:80px 0}
+    .title{font-family:'Playfair Display',serif;font-size:2rem;margin:0 0 .6rem}
+    .sub{color:var(--muted);margin:0 0 1.6rem}
+
+    .about{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+    .card{background:linear-gradient(180deg,#fff,#f7efe4);border:1px solid #eadfce;border-radius:18px;padding:18px;box-shadow:0 10px 32px rgba(0,0,0,.08)}
+
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .service{background:#fff;border:1px solid #eadfce;border-radius:16px;padding:18px;min-height:170px;transition:transform .2s ease, box-shadow .2s ease}
+    .service:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
+    .service h4{margin:.2rem 0 .35rem 0}
+
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .work{border-radius:14px;overflow:hidden;border:1px solid #eadfce;background:#fff}
+    .work img{height:220px;object-fit:cover;width:100%}
+    .w-body{padding:12px}
+    .pill{display:inline-block;background:rgba(214,162,94,.16);border:1px solid rgba(214,162,94,.35);color:#5b4b3e;border-radius:999px;padding:.22rem .55rem;font-size:.78rem}
+
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+    form{background:#fff;border:1px solid #eadfce;border-radius:16px;padding:18px}
+    label{display:block;font-size:.9rem;margin:.5rem 0 .25rem;color:#4b443c}
+    input, textarea{width:100%;padding:.8rem .95rem;border:1px solid #e3d7c6;border-radius:12px;background:#fff}
+    textarea{min-height:110px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    footer{background:linear-gradient(180deg,var(--cream-100),var(--cream-50));border-top:1px solid #eadfce;margin-top:40px}
+    .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px;padding:24px 0}
+    .subfoot{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-top:1px solid #eadfce;color:#6e645a;font-size:.9rem}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(18px);transition:.6s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+
+    /* Responsive grids */
+    @media (max-width:1100px){.services{grid-template-columns:repeat(2,1fr)}.portfolio{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}.contact{grid-template-columns:1fr}}
+    @media (max-width:640px){.portfolio{grid-template-columns:1fr}.services{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container nav">
+      <a href="#acasa" class="logo" aria-label="Cristi Pătrașcanu">
+        <!-- LOGO: monogramă C aurit + semnătură -->
+        <svg viewBox="0 0 820 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cristi Pătrașcanu">
+          <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#b88a55"/><stop offset="50%" stop-color="#d6a25e"/><stop offset="100%" stop-color="#f1d9b5"/>
+            </linearGradient>
+            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity=".28"/>
+            </filter>
+          </defs>
+          <!-- Monogramă C -->
+          <path d="M86,80c0,38 26,66 64,66c16,0 29,-4 41,-12l-8,-14c-10,7 -21,10 -34,10c-28,0 -46,-20 -46,-50c0,-31 18,-50 46,-50c13,0 24,3 34,10l8,-14c-12,-8 -25,-12 -41,-12c-38,0 -64,28 -64,66z" fill="url(#g)" filter="url(#soft)"/>
+          <!-- Nume semnătură -->
+          <text x="170" y="108" font-family="'Great Vibes', cursive" font-size="92" fill="url(#g)" filter="url(#soft)">Cristi Pătrașcanu</text>
+          <!-- Subtitlu mic -->
+          <text x="174" y="135" font-family="Inter, sans-serif" font-size="16" fill="#f1e7d6" opacity=".9" letter-spacing=".12em">WEB DESIGNER & DEVELOPER</text>
+        </svg>
+      </a>
+
+      <div class="burger" id="burger" aria-label="Deschide meniul" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+
+      <nav class="menu" id="menu" aria-label="Meniu principal">
+        <ul>
+          <li><a href="#acasa">Acasă</a></li>
+          <li><a href="#despre">Despre mine</a></li>
+          <li><a href="#servicii">Servicii</a></li>
+          <li><a href="#portofoliu">Portofoliu</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="cta" href="#contact">Cere ofertă</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="acasa" class="hero">
+    <div class="inner">
+      <h1>Site-uri premium, elegante și rapide</h1>
+      <p class="roles">Sunt <strong>Cristi Pătrașcanu</strong> — dezvoltator web & designer cu experiență în
+        <em>WordPress</em>, <em>HTML/CSS/JS</em>, <em>PHP/Python</em>, <em>fotografie produs</em> și <em>editare video</em>.</p>
+      <div class="badges">
+        <span class="badge">Web Design Modern</span>
+        <span class="badge">Dezvoltare WordPress</span>
+        <span class="badge">SEO & Marketing Digital</span>
+        <span class="badge">Fotografie & Video</span>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="#servicii">Vezi serviciile</a>
+        <a class="btn ghost" href="#portofoliu">Portofoliu</a>
+        <a class="btn ghost" href="https://wa.me/40723344369?text=Bună!%20Aș%20vrea%20o%20ofertă%20pentru%20un%20site." target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESPRE ===== -->
+  <section id="despre">
+    <div class="container about">
+      <div class="card reveal">
+        <h3 class="title">Despre mine</h3>
+        <p class="sub">Pun accent pe calitate, estetică vizuală și funcționalitate optimă. Construiesc site-uri rapide, bine structurate, ușor de administrat și pregătite pentru conversie.</p>
+        <ul style="margin:0;padding-left:1.1rem;line-height:1.9">
+          <li>Experiență solidă în <strong>WordPress</strong>, <strong>HTML/CSS/JS</strong>, <strong>PHP/Python</strong></li>
+          <li><strong>Design orientat pe rezultate</strong>: UX clar, identitate coerentă, brand vizual</li>
+          <li><strong>SEO On-Page</strong>, structură semantică și viteze excelente</li>
+          <li>Suport media: <strong>fotografie produs</strong> & <strong>editare video</strong></li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3 class="title">Ce primești</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="pill">⚡ Viteză & Lighthouse bun</div>
+          <div class="pill">🔒 Securitate & backup</div>
+          <div class="pill">📱 Responsive complet</div>
+          <div class="pill">🧭 UX clar & conversii</div>
+          <div class="pill">📝 Admin ușor în WP</div>
+          <div class="pill">📈 SEO de bază inclus</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICII ===== -->
+  <section id="servicii" style="background:linear-gradient(180deg,#fff,#f7efe4)">
+    <div class="container">
+      <h3 class="title">Servicii</h3>
+      <p class="sub">Tot ce ai nevoie pentru o prezență online profesionistă.</p>
+      <div class="services">
+        <div class="service reveal">
+          <h4>Web Design Modern</h4>
+          <p>Design premium, clar, adaptat brandului. Focus pe UX/UI, tipografie, culori și micro-interacțiuni.</p>
+        </div>
+        <div class="service reveal">
+          <h4>Dezvoltare WordPress</h4>
+          <p>Teme custom, viteze excelente, structură SEO, formulare, blog, e-commerce la cerere.</p>
+        </div>
+        <div class="service reveal">
+          <h4>SEO & Marketing Digital</h4>
+          <p>On-page corect, optimizări viteze, structură semantică, tracking și recomandări campanii.</p>
+        </div>
+        <div class="service reveal">
+          <h4>Fotografie & Video</h4>
+          <p>Set foto produs + clipuri scurte pentru pagini, reclame și social media — coezive cu site-ul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTOFOLIU ===== -->
+  <section id="portofoliu">
+    <div class="container">
+      <h3 class="title">Portofoliu</h3>
+      <p class="sub">Selecție demo — înlocuiește cu proiectele tale reale.</p>
+      <div class="portfolio">
+        <article class="work reveal">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Proiect corporate">
+          <div class="w-body">
+            <div><strong>Corporate UI</strong></div>
+            <small class="pill">WordPress • UI/UX</small>
+          </div>
+        </article>
+        <article class="work reveal">
+          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop" alt="Landing Page">
+          <div class="w-body">
+            <div><strong>Landing Page High-Conversion</strong></div>
+            <small class="pill">HTML/CSS/JS • SEO</small>
+          </div>
+        </article>
+        <article class="work reveal">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Shop">
+          <div class="w-body">
+            <div><strong>Shop Minimal</strong></div>
+            <small class="pill">WP • Woo • Optimizări</small>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container contact">
+      <div class="reveal">
+        <h3 class="title">Contact</h3>
+        <p class="sub">Hai să discutăm despre proiectul tău. Răspund rapid și clar.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 1rem 0;line-height:1.9">
+          <li>📞 Telefon / WhatsApp: <a href="https://wa.me/40723344369?text=Bună!%20Aș%20vrea%20o%20ofertă%20pentru%20un%20site." target="_blank">0723 344 369</a></li>
+          <li>📧 Email: <a href="mailto:cristipetrut@yahoo.com">cristipetrut@yahoo.com</a></li>
+          <li>📍 Locație: România (remote & on-site la cerere)</li>
+        </ul>
+      </div>
+      <form class="reveal" onsubmit="event.preventDefault(); window.location.href='mailto:cristipetrut@yahoo.com?subject=Cerere%20oferta%20site&body=Nume:%20%0ATelefon:%20%0ADescriere%20proiect:%20';">
+        <div class="row">
+          <div>
+            <label for="nume">Nume</label>
+            <input id="nume" name="nume" placeholder="Numele tău" required>
+          </div>
+          <div>
+            <label for="telefon">Telefon</label>
+            <input id="telefon" name="telefon" placeholder="07xx xxx xxx" required>
+          </div>
+        </div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="email@exemplu.ro" required>
+        <label for="mesaj">Mesaj</label>
+        <textarea id="mesaj" name="mesaj" placeholder="Spune-mi pe scurt despre business și obiective."></textarea>
+        <div style="display:flex;gap:.6rem;align-items:center;margin-top:12px">
+          <button class="cta" type="submit">Trimite</button>
+          <a class="btn ghost" href="https://wa.me/40723344369?text=Bună!%20Aș%20vrea%20o%20ofertă%20pentru%20un%20site." target="_blank">Scrie pe WhatsApp</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <!-- Logo mic în footer -->
+        <svg viewBox="0 0 820 160" xmlns="http://www.w3.org/2000/svg" style="height:44px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.2))">
+          <defs>
+            <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#b88a55"/><stop offset="50%" stop-color="#d6a25e"/><stop offset="100%" stop-color="#f1d9b5"/>
+            </linearGradient>
+          </defs>
+          <path d="M86,80c0,38 26,66 64,66c16,0 29,-4 41,-12l-8,-14c-10,7 -21,10 -34,10c-28,0 -46,-20 -46,-50c0,-31 18,-50 46,-50c13,0 24,3 34,10l8,-14c-12,-8 -25,-12 -41,-12c-38,0 -64,28 -64,66z" fill="url(#g2)"/>
+          <text x="170" y="108" font-family="'Great Vibes', cursive" font-size="92" fill="url(#g2)">Cristi Pătrașcanu</text>
+        </svg>
+        <p class="sub">Web Design & Development • WordPress • SEO • Foto & Video</p>
+      </div>
+      <div>
+        <h4 class="title" style="font-size:1.1rem">Linkuri rapide</h4>
+        <ul style="list-style:none;padding:0;margin:0;line-height:2">
+          <li><a href="#servicii">Servicii</a></li>
+          <li><a href="#portofoliu">Portofoliu</a></li>
+          <li><a href="#despre">Despre mine</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="title" style="font-size:1.1rem">Contact</h4>
+        <ul style="list-style:none;padding:0;margin:0;line-height:2">
+          <li><a href="mailto:cristipetrut@yahoo.com">cristipetrut@yahoo.com</a></li>
+          <li><a href="https://wa.me/40723344369" target="_blank">WhatsApp: 0723 344 369</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container subfoot">
+      <div>© <span id="y">2025</span> Cristi Pătrașcanu. Toate drepturile rezervate.</div>
+      <div class="sub">Politica de confidențialitate • Termeni</div>
+    </div>
+  </footer>
+
+  <script>
+    // Anul curent
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Burger & meniu mobil (fix: X + scroll body)
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    const links = menu.querySelectorAll('a');
+
+    const toggleMenu = () => {
+      burger.classList.toggle('active');
+      menu.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : 'auto';
+    };
+
+    burger.addEventListener('click', toggleMenu);
+    burger.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggleMenu(); }});
+
+    // Închide meniul la click pe link
+    links.forEach(l=>l.addEventListener('click', ()=>{
+      burger.classList.remove('active'); menu.classList.remove('open'); document.body.style.overflow='auto';
+    }));
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); }});
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>
